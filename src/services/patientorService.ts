@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import diagnoses from "../../data/diagnoses";
 import patients from "../../data/patients";
 import {
