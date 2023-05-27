@@ -5,6 +5,7 @@ import {
   NonSensitivePatient,
   Patient,
   NewPatientEntry,
+  Entry,
 } from "../types";
 import { v1 as uuid } from "uuid";
 
@@ -22,16 +23,27 @@ const getNonsensitivePatients = (): NonSensitivePatient[] => {
   }));
 };
 
+const findPatientById = (id: string) => {
+  return patients.filter((patient) => patient.id === id);
+};
+
 const addPatient = (patient: NewPatientEntry): Patient => {
   const id = uuid();
+  const entries: Entry[] = [];
 
   const newPatient = {
     ...patient,
     id,
+    entries,
   };
   patients.push(newPatient);
 
   return newPatient;
 };
 
-export default { getDiagnoses, getNonsensitivePatients, addPatient };
+export default {
+  getDiagnoses,
+  getNonsensitivePatients,
+  addPatient,
+  findPatientById,
+};
