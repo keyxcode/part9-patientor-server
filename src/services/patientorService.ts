@@ -24,7 +24,7 @@ const getNonsensitivePatients = (): NonSensitivePatient[] => {
 };
 
 const findPatientById = (id: string) => {
-  return patients.filter((patient) => patient.id === id);
+  return patients.filter((patient) => patient.id === id)[0];
 };
 
 const addPatient = (patient: NewPatientEntry): Patient => {
