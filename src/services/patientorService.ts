@@ -6,6 +6,7 @@ import {
   Patient,
   NewPatientEntry,
   Entry,
+  NewHealthEntry,
 } from "../types";
 import { v1 as uuid } from "uuid";
 
@@ -41,9 +42,26 @@ const addPatient = (patient: NewPatientEntry): Patient => {
   return newPatient;
 };
 
+export const addNewEntry = (
+  patientId: string,
+  entry: NewHealthEntry
+): Entry => {
+  const currentPatient = patients.find((patient) => patient.id === patientId);
+  if (!currentPatient) {
+    throw new Error(`Patient ID doesn't exist: ${patientId}`);
+  }
+
+  const entryId = uuid();
+  const newPatientEntry = { id: entryId, ...entry };
+  currentPatient.entries.push(newPatientEntry);
+
+  return newPatientEntry;
+};
+
 export default {
   getDiagnoses,
   getNonsensitivePatients,
   addPatient,
   findPatientById,
+  addNewEntry,
 };
