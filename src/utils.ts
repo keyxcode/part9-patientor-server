@@ -164,7 +164,7 @@ const toNewEntry = (object: unknown): NewHealthEntry => {
     description: parseString(object.description, "description"),
     date: parseDate(object.date),
     specialist: parseString(object.specialist, "specialist"),
-    diagnosisCodes: parseDiagnosisCodes(object),
+    diagnosisCodes: parseDiagnosisCodes(object.diagnosisCodes),
   };
 
   switch (object.type) {
